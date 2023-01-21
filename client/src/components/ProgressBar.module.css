@@ -3,6 +3,7 @@
   height: 7px;
   background: rgb(230, 230, 230);
   border-radius: 5px;
+  transition: 0.5s;
 }
 
 .progress {
