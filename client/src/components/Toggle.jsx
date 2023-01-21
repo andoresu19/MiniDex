@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Toggle.module.css";
 
-export function Toggle() {
+export function Toggle({changeTheme}) {
   const [isToggle, setIsToggle] = useState(false);
   const handleIcon = () => {
     if (isToggle) {
@@ -9,6 +9,7 @@ export function Toggle() {
     } else {
       setIsToggle(true);
     }
+    changeTheme()
   };
   useEffect(() => {});
 

@@ -1,10 +1,11 @@
 import styles from "./PokemonForm.module.css";
 
-export function PokemonForm() {
+export function PokemonForm({theme}) {
+  const handleTheme = (curr) => (curr === "light" ? styles.container : styles.containerDark);
   return (
-    <div className={styles.div_container}>
+    <div className={handleTheme(theme)}>
       <div className={styles.text}>
-        <h1 className={styles.title}>Mini-dex</h1>
+        <h1 className={styles.title}>MiniDex</h1>
         <p className={styles.subtitle}>
           A small web version of the pokemon pokedex.
         </p>

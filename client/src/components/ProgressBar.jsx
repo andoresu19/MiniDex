@@ -1,6 +1,6 @@
 import styles from "./ProgressBar.module.css";
 
-export function ProgressBar({ value, maxVal }) {
+export function ProgressBar({ value, maxVal, theme }) {
   if (!maxVal) {
     maxVal = 100;
   }
@@ -10,9 +10,11 @@ export function ProgressBar({ value, maxVal }) {
   if (value == 0) {
     value = 0.2
   }
+  const handleTheme = (curr) => (curr === "light" ? styles.bar : styles.barDark);
+  console.log(theme)
 
   return (
-    <div className={styles.bar}>
+    <div className={handleTheme(theme)}>
       <div
         className={styles.progress}
         style={{
