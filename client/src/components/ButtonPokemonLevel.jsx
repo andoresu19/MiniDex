@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styles from "./ButtonPokemonLevel.module.css";
 
 export function ButtonPokemonLevel({ visible, order, sprite }) {
@@ -6,11 +7,16 @@ export function ButtonPokemonLevel({ visible, order, sprite }) {
   if (order == "next") buttonStyle["right"] = "-20px";
   if (order == "back") buttonStyle["left"] = "-20px";
   return (
-    <div
+    <motion.div
+      whileHover={{
+        scale: 1.15,
+        transition: { duration: 0.25 },
+      }}
+      whileTap={{ scale: 0.9 }}
       className={styles.content}
       style={buttonStyle}
     >
       <img className={styles.image} src={sprite} />
-    </div>
+    </motion.div>
   );
 }
