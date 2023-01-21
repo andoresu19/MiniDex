@@ -11,7 +11,6 @@ export function ProgressBar({ value, maxVal, theme }) {
     value = 0.2
   }
   const handleTheme = (curr) => (curr === "light" ? styles.bar : styles.barDark);
-  console.log(theme)
 
   return (
     <div className={handleTheme(theme)}>
