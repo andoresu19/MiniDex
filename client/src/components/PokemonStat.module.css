@@ -1,0 +1,15 @@
+.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.name, .value {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
