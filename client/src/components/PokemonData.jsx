@@ -1,24 +1,12 @@
 import styles from "./PokemonData.module.css";
-import { useEffect, useRef } from "react";
-import VanillaTilt from "vanilla-tilt";
 import image from "../assets/004.png";
 import { PokemonStat } from "./PokemonStat";
 import { ButtonPokemonLevel } from "./ButtonPokemonLevel";
+import { Tilt } from "./Tilt";
 
 export function PokemonData({ theme }) {
   const sprite =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png";
-
-  const Tilt = (props) => {
-    const { options, ...rest } = props;
-    const tilt = useRef(null);
-
-    useEffect(() => {
-      VanillaTilt.init(tilt.current, options);
-    }, [options]);
-
-    return <div ref={tilt} {...rest} />;
-  };
 
   const options = {
     scale: 1.05,
