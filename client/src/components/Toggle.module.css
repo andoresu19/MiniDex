@@ -1,0 +1,46 @@
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.label,
+.labelDisabled {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.label {
+  background-color: #efefef;
+}
+.labelDisabled {
+  background-color: #3f3f3f;
+}
+.label::after,
+.labelDisabled::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 5px;
+  transition: 0.5s;
+}
+
+.label::after {
+  background: #3f3f3f;
+  left: 5px;
+}
+
+.labelDisabled::after {
+  background: #efefef;
+  left: 45px;
+}
+
+.check {
+  display: none;
+}
