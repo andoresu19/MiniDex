@@ -3,6 +3,7 @@ import image from "../assets/004.png";
 import { PokemonStat } from "./PokemonStat";
 import { ButtonPokemonLevel } from "./ButtonPokemonLevel";
 import { Tilt } from "./Tilt";
+import {TypeTag} from "./TypeTag";
 
 export function PokemonData({ theme }) {
   const sprite =
@@ -16,17 +17,39 @@ export function PokemonData({ theme }) {
   const handleTheme = (curr) =>
     curr === "light" ? styles.container : styles.containerDark;
 
+  const types = {
+    normal: ["#9E9FA1"],
+    fire: ["#FC0022"],
+    water: ["#5E43F1"],
+    grass: ["#00B925"],
+    flying: ["#84AFEE"],
+    fighting: ["#FF7100"],
+    poison: ["#B800CF"],
+    electric: ["#EDD500"],
+    ground: ["#905025"],
+    rock: ["#A9B380"],
+    psychic: ["#FF0075"],
+    ice: ["#00DBFF"],
+    bug: ["#7EB418"],
+    ghost: ["#840078"],
+    steel: ["#57A1B5"],
+    dragron: ["#8100E8"],
+    dark: ["#4F3C3A"],
+    fairy: ["#FF00F0"],
+  };
+  const type = 'fire'
+
   return (
     <div className={handleTheme(theme)}>
       <Tilt options={options} className={styles.container}>
-        <div className={styles.container_cont}>
+        <div className={styles.container_cont} style={{background: types[type]+'14'}}>
           <div className={styles.image_box}>
             <img className={styles.img} src={image} />
           </div>
           <div className={styles.pokemon_data}>
             <div className={styles.types_box}>
-              <span className={styles.type}>Fire</span>
-              <span className={styles.type}>Earth</span>
+              <TypeTag type={type} color={types[type]}></TypeTag>
+              <TypeTag type={'ice'} color={types['ice']}></TypeTag>
             </div>
             <div className={styles.measures_box}>
               <span className={styles.measure}>Weight: 65g</span>
