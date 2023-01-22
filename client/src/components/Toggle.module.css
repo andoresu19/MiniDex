@@ -44,3 +44,25 @@
 .check {
   display: none;
 }
+@media (max-width: 850px) {
+  .switch {
+    top: 5px;
+    right: 7px;
+  }
+  .label,
+  .labelDisabled {
+    width: 60px;
+    height: 30px;
+  }
+.label::after,
+.labelDisabled::after {
+  width: 20px;
+  height: 20px;
+}
+
+.label::after {
+  left: 5px;
+}
+.labelDisabled::after {
+  left: 35px;
+}}

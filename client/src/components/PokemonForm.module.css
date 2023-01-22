@@ -46,33 +46,6 @@
   margin: 0 auto;
 }
 
-.input {
-  padding: 20px 15px;
-  border: none;
-  border-bottom: 1px solid rgba(98, 114, 164, 50%);
-  outline: none;
-  background: rgba(68, 71, 90, 2%);
-  backdrop-filter: blur(4px);
-  color: #3f3f3f;
-  max-width: 400px;
-  height: 30px;
-  width: 100%;
-  font-size: 20px;
-  text-align: center;
-  position: relative;
-}
-.containerDark .input {
-  background: rgba(239, 239, 239, 1%);
-  color: #efefef;
-}
-.input:focus {
-  outline: none;
-  border-bottom: 3px solid rgba(98, 114, 164, 100%);
-}
-.input:active {
-  outline: none;
-}
-
 .button {
   margin-top: 40px;
   border: none;
@@ -94,3 +67,26 @@
 .button_label {
   display: none;
 }
+
+@media (max-width: 850px) {
+.container,
+.containerDark {
+  height: 100%;  
+  margin: 0 auto;
+  font-size: 15px;
+  gap: 20px;
+  justify-content: space-between;
+}
+.title {
+  font-size: 40px;
+}
+.subtitle {
+  font-size: 15px;
+}
+.button {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+}
+
