@@ -6,6 +6,7 @@ import { Toggle } from "./components/Toggle";
 import { useState } from "react";
 import logo from "/pokemon_logo.png";
 import { PopUp } from "./components/PopUp";
+import axios from "axios";
 
 export function App() {
   const [theme, setTheme] = useState("light");
@@ -29,12 +30,40 @@ export function App() {
     img_principal: logo,
   };
   const [pokemon, setPokemon] = useState(initObj);
+  const savePokemon = async (pokemon) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/pokemon/${pokemon.id}`
+      );
+      if (res.data.length == 0) {
+        console.log(JSON.stringify(pokemon.types));
+        const tempPokemon = {
+          name: pokemon.name,
+          id: pokemon.id,
+          height: pokemon.height,
+          weight: pokemon.weight,
+          xp: pokemon.xp,
+          hp: pokemon.hp,
+          atk: pokemon.atk,
+          def: pokemon.def,
+          spa: pokemon.spa,
+          spd: pokemon.spd,
+          spe: pokemon.spe,
+          types: JSON.stringify(pokemon.types),
+          image: pokemon.img_principal,
+        };
+        await axios.post("http://localhost:3000/pokemon", tempPokemon);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const fun = (id, name) => {
-    fetch("https://pokeapi.co/api/v2/pokemon/" + id + name)
+    fetch("https://pokeapi.co/api/v2/pokemon/" + id + name.toLowerCase())
       .then((response) => response.json())
       .then((data) => {
-        setPokemon({
+        const pokemon = {
           name: data.name,
           id: data.id,
           height: data.height,
@@ -48,7 +77,9 @@ export function App() {
           spe: data.stats[5].base_stat,
           types: data.types.map((type) => type["type"]["name"]),
           img_principal: data.sprites.other["official-artwork"].front_default,
-        });
+        };
+        setPokemon(pokemon);
+        savePokemon(pokemon);
       })
       .catch((err) => {
         console.log(err);
