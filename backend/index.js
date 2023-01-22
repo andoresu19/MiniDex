@@ -2,13 +2,14 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "minidex",
-  port: 23306,
-});
+const conf = {
+  host: "mysql_server",
+  user: "brayan",
+  password: "pass",
+  database: "minidex"
+};
+
+let db = null
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/create-table", (req, res) => {
+
+  db =  mysql.createConnection(conf);
   const sql = `
     CREATE TABLE IF NOT EXISTS pokemons (
       id INT NOT NULL,
