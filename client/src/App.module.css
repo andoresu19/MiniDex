@@ -5,12 +5,9 @@
 .father {
   width: 100%;
   background: #efefef;
-  /* background-image: url('./assets/pokemon_ball.svg'); */
-  /* background-repeat: no-repeat; */
-  /* background-position: -20% 150%; */
-  /* background-size: 1200px; */
   transition: 0.5s;
   position: relative;
+/* overflow: hidden; */
 }
 .father::before {
   content: "";
@@ -30,6 +27,8 @@
   width: 100%;
   background: #44475a;
   transition: 0.5s;
+  position: relative;
+  overflow: hidden;
 }
 .fatherDark::before {
   content: "";
@@ -61,5 +60,11 @@
   .app {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 40px;
+    padding: 20px 30px;
+    padding-top: 45px;
+  }
+  .father::before, .fatherDark::before {
+    background-image: none;
   }
 }
