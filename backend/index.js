@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2");
+const cors = require("cors");
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -11,6 +12,7 @@ const db = mysql.createConnection({
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -100,7 +102,8 @@ app.delete("/pokemon/:id", (req, res) => {
 
 app.put("/pokemon/:id", (req, res) => {
   const pokemonId = req.params.id;
-  const sql = "UPDATE pokemons SET `id`= ?, `name`= ?, `image`= ?, `xp`= ?, `hp`= ?, `atk`= ?, `def`= ?, `spa`= ?, `spd`= ?, `spe`= ?, `weight`= ?, `height`= ?, `types`= ? WHERE id = ?";
+  const sql =
+    "UPDATE pokemons SET `id`= ?, `name`= ?, `image`= ?, `xp`= ?, `hp`= ?, `atk`= ?, `def`= ?, `spa`= ?, `spd`= ?, `spe`= ?, `weight`= ?, `height`= ?, `types`= ? WHERE id = ?";
 
   const values = [
     req.body.id,
@@ -118,7 +121,7 @@ app.put("/pokemon/:id", (req, res) => {
     req.body.types,
   ];
 
-  db.query(sql, [...values,pokemonId], (err, data) => {
+  db.query(sql, [...values, pokemonId], (err, data) => {
     if (err) return res.send(err);
     return res.json(data);
   });
