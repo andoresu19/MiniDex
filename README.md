@@ -1,4 +1,4 @@
-# Mini-dex
+# MiniDex
 
 _A small web version of the pokemon pokedex._
 
