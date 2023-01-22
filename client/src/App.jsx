@@ -3,9 +3,7 @@ import styles from "./App.module.css";
 import { PokemonData } from "./components/PokemonData";
 import { PokemonForm } from "./components/PokemonForm";
 import { Toggle } from "./components/Toggle";
-import { createContext, useState } from "react";
-
-export const ThemeContext = createContext(null);
+import { useState } from "react";
 
 export function App() {
   const [theme, setTheme] = useState("light");
@@ -29,8 +27,8 @@ export function App() {
   });
 
   const fun = (id, name) => {
-    console.log(id, name)
-    fetch("https://pokeapi.co/api/v2/pokemon/"+id+name)
+    console.log(id, name);
+    fetch("https://pokeapi.co/api/v2/pokemon/" + id + name)
       .then((response) => response.json())
       .then((data) => {
         setPokemon({
@@ -58,14 +56,12 @@ export function App() {
     curr === "light" ? styles.father : styles.fatherDark;
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <Div100vh className={handleTheme(theme)} id={theme}>
-        <div className={styles.app}>
-          <PokemonData theme={theme} pokemon={pokemon} />
-          <PokemonForm handleClick={fun} theme={theme} pokemon={pokemon} />
-          <Toggle changeTheme={toggleTheme} />
-        </div>
-      </Div100vh>
-    </ThemeContext.Provider>
+    <Div100vh className={handleTheme(theme)} id={theme}>
+      <div className={styles.app}>
+        <PokemonData theme={theme} pokemon={pokemon} />
+        <PokemonForm handleClick={fun} theme={theme} pokemon={pokemon} />
+        <Toggle changeTheme={toggleTheme} />
+      </div>
+    </Div100vh>
   );
 }
