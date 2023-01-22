@@ -17,7 +17,7 @@ Es necesatio comprobar que los siquientes puertos se encuentran disponibles:
 
 ## Despliegue de la aplicación
 
-El despliegue de la aplicación está automatizado mediante docker-compuse. Para montar la aplicaicón ejecutar en la raiz del proyecto el comando:
+El despliegue de la aplicación está automatizado mediante docker-compuse. Para montar la aplicación ejecutar en la raíz del proyecto el comando:
 
 ```
 docker-compose up -d
@@ -26,7 +26,7 @@ docker-compose up -d
 
 ## Desmontar
 
-Para desmontar la aplicaión y eliminar las imagenes y contenedores ejecutar en la raiz del proyecto el comando:
+Para desmontar la aplicación y eliminar las imagenes y contenedores ejecutar en la raíz del proyecto el comando:
 
 ```
 docker-compuse down --rmi all
@@ -38,7 +38,7 @@ docker-compuse down --rmi all
 
   - **Formulario**
     - Crear mockup de los inputs (ID, Name).
-    - Definir validaciones de entrada (Sólo números para id, **¿Y qué más?**).
+    - Definir tipos de entrada.
     - Realizar pruebas de entradas en los inputs.
     - Definir función "limpiar" para los inputs.
     - Definir función placeholder para inputs.
