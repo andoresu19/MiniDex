@@ -1,9 +1,13 @@
 .title {
-  font-weight: bold;
+  font-weight: 900;
   font-size: 70px;
   color: #3f3f3f;
 }
-.containerDark .title, .containerDark .subtitle {
+.opacity {
+  opacity: .6;
+}
+.containerDark .title,
+.containerDark .subtitle {
   color: #efefef;
   transition: 0.5s;
 }
@@ -45,11 +49,10 @@
 .input {
   padding: 20px 15px;
   border: none;
-border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid rgba(98, 114, 164, 50%);
   outline: none;
-
-background: rgba(239, 239, 239, 1%);
-  backdrop-filter: blur(4.0px);
+  background: rgba(68, 71, 90, 2%);
+  backdrop-filter: blur(4px);
   color: #3f3f3f;
   max-width: 400px;
   height: 30px;
@@ -58,9 +61,13 @@ background: rgba(239, 239, 239, 1%);
   text-align: center;
   position: relative;
 }
+.containerDark .input {
+  background: rgba(239, 239, 239, 1%);
+  color: #efefef;
+}
 .input:focus {
   outline: none;
-  border-bottom: 2px solid blue;
+  border-bottom: 3px solid rgba(98, 114, 164, 100%);
 }
 .input:active {
   outline: none;
@@ -71,15 +78,17 @@ background: rgba(239, 239, 239, 1%);
   border: none;
   border-radius: 30px;
   padding: 15px 50px;
-  background: blue;
+  background: #ff79c6;
+  position: relative;
   color: #efefef;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
   /* |-- ALINEACIÓN A LA DERECHA --|*/
-/* align-self: flex-end; */
+  /* align-self: flex-end; */
 }
 .button:hover {
-  background: darkblue;
+  opacity: 0.8;
 }
 
 .button_label {

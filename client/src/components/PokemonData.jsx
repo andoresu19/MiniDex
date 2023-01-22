@@ -1,11 +1,12 @@
 import styles from "./PokemonData.module.css";
-import image from "../assets/004.png";
 import { PokemonStat } from "./PokemonStat";
 import { ButtonPokemonLevel } from "./ButtonPokemonLevel";
 import { Tilt } from "./Tilt";
-import {TypeTag} from "./TypeTag";
+import { TypeTag } from "./TypeTag";
+import {useState} from "react";
+import { motion } from "framer-motion";
 
-export function PokemonData({ theme }) {
+export function PokemonData({ theme, pokemon }) {
   const sprite =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png";
 
@@ -37,60 +38,82 @@ export function PokemonData({ theme }) {
     dark: ["#4F3C3A"],
     fairy: ["#FF00F0"],
   };
-  const type = 'fire'
+  const [inte, setInte] = useState('30')
+
+  const handleHover = () => {
+    setInte('40')
+  }
+  const handleHoverOut = () => {
+    setInte('20')
+  }
 
   return (
-    <div className={handleTheme(theme)}>
+    <motion.div className={handleTheme(theme)}>
       <Tilt options={options} className={styles.container}>
-        <div className={styles.container_cont} style={{background: types[type]+'14'}}>
+        <div
+          className={styles.container_cont}
+          style={{ background: types[pokemon.types[0]] + inte }}
+          onMouseOver={handleHover}
+          onMouseOut={handleHoverOut}
+        >
           <div className={styles.image_box}>
-            <img className={styles.img} src={image} />
+            <div
+              className={styles.image_back}
+              style={{ background: types[pokemon.types[0]] + inte }}
+            />
+            <img className={styles.img} src={pokemon.img_principal} />
           </div>
           <div className={styles.pokemon_data}>
             <div className={styles.types_box}>
-              <TypeTag type={type} color={types[type]}></TypeTag>
-              <TypeTag type={'ice'} color={types['ice']}></TypeTag>
+              {pokemon.types.map((f) => (
+                <TypeTag type={f} color={types[f]} />
+              ))}
             </div>
             <div className={styles.measures_box}>
-              <span className={styles.measure}>Weight: 65g</span>
-              <span className={styles.measure}>Heigth: 12m</span>
+              <span className={styles.measure}>Weight: {pokemon.weight}</span>
+              <span className={styles.measure}>Heigth: {pokemon.height}</span>
             </div>
             <div className={styles.stats_box}>
               <span className={styles.title}>Base stats</span>
               <PokemonStat
                 name={"XP:"}
-                value={100}
+                value={pokemon.xp}
                 maxVal={255}
                 theme={theme}
               />
               <PokemonStat
                 name={"HP:"}
-                value={100}
+                value={pokemon.hp}
                 maxVal={255}
                 theme={theme}
               />
               <PokemonStat
                 name={"Atk:"}
-                value={23}
+                value={pokemon.atk}
                 maxVal={255}
                 theme={theme}
               />
               <PokemonStat
                 name={"Def:"}
-                value={45}
+                value={pokemon.def}
                 maxVal={255}
                 theme={theme}
               />
-              <PokemonStat name={"SpA:"} value={7} maxVal={255} theme={theme} />
+              <PokemonStat
+                name={"SpA:"}
+                value={pokemon.spa}
+                maxVal={255}
+                theme={theme}
+              />
               <PokemonStat
                 name={"SpD:"}
-                value={230}
+                value={pokemon.spd}
                 maxVal={255}
                 theme={theme}
               />
               <PokemonStat
                 name={"Spe:"}
-                value={58}
+                value={pokemon.spe}
                 maxVal={255}
                 theme={theme}
               />
@@ -98,8 +121,8 @@ export function PokemonData({ theme }) {
           </div>
         </div>
       </Tilt>
-      <ButtonPokemonLevel visible={1} order="next" sprite={sprite} />
-      <ButtonPokemonLevel visible={1} order="back" sprite={sprite} />
-    </div>
+      <ButtonPokemonLevel visible={0} order="next" sprite={sprite} />
+      <ButtonPokemonLevel visible={0} order="back" sprite={sprite} />
+    </motion.div>
   );
 }

@@ -16,12 +16,12 @@
   content: "";
   background-color: #e5e5f7;
   opacity: 0.1;
-/* background-image: repeating-radial-gradient( */
-/* circle at 0 0, */
-/* transparent 0, */
-/* #e5e5f7 40px */
-/* ), */
-/* repeating-linear-gradient(#444cf755, #444cf7); */
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 40px
+    ),
+    repeating-linear-gradient(#444cf755, #444cf7);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -30,6 +30,20 @@
   width: 100%;
   background: #44475a;
   transition: 0.5s;
+}
+.fatherDark::before {
+  content: "";
+  background-color: #e5e5f7;
+  opacity: 0.1;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 40px
+    ),
+    repeating-linear-gradient(#44475a55, #44475a);
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .app {
@@ -46,5 +60,6 @@
 @media (max-width: 850px) {
   .app {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
