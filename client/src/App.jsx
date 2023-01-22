@@ -32,6 +32,7 @@ export function App() {
   const [pokemon, setPokemon] = useState(initObj);
   const savePokemon = async (pokemon) => {
     try {
+      await axios.get("http://localhost:3000/create-table");
       const res = await axios.get(
         `http://localhost:3000/pokemon/${pokemon.id}`
       );
