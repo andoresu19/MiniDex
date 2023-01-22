@@ -3,7 +3,7 @@ import { PokemonStat } from "./PokemonStat";
 import { ButtonPokemonLevel } from "./ButtonPokemonLevel";
 import { Tilt } from "./Tilt";
 import { TypeTag } from "./TypeTag";
-import {useState} from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export function PokemonData({ theme, pokemon }) {
@@ -38,18 +38,23 @@ export function PokemonData({ theme, pokemon }) {
     dark: ["#4F3C3A"],
     fairy: ["#FF00F0"],
   };
-  const [inte, setInte] = useState('30')
+  const [inte, setInte] = useState("30");
 
   const handleHover = () => {
-    setInte('40')
-  }
+    setInte("40");
+  };
   const handleHoverOut = () => {
-    setInte('20')
-  }
+    setInte("20");
+  };
 
   return (
-    <motion.div className={handleTheme(theme)}>
-      <Tilt options={options} className={styles.container}>
+    <motion.div
+      className={handleTheme(theme)}
+      animate={{ y: 0, opacity: 100 }}
+      initial={{ y: -100, opacity: 0 }}
+      transition={{ delay: .5 }}
+    >
+      <Tilt options={options}>
         <div
           className={styles.container_cont}
           style={{ background: types[pokemon.types[0]] + inte }}
@@ -57,10 +62,6 @@ export function PokemonData({ theme, pokemon }) {
           onMouseOut={handleHoverOut}
         >
           <div className={styles.image_box}>
-            <div
-              className={styles.image_back}
-              style={{ background: types[pokemon.types[0]] + inte }}
-            />
             <img className={styles.img} src={pokemon.img_principal} />
           </div>
           <div className={styles.pokemon_data}>
