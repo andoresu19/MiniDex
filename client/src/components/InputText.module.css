@@ -19,6 +19,7 @@
   font-size: 20px;
   text-align: center;
   position: relative;
+  text-transform:capitalize;
 }
 .containerDark .input, .containerDark .label {
   background: rgba(239, 239, 239, 1%);
