@@ -31,7 +31,6 @@ export function App() {
   const [pokemon, setPokemon] = useState(initObj);
 
   const fun = (id, name) => {
-    console.log(id, name);
     fetch("https://pokeapi.co/api/v2/pokemon/" + id + name)
       .then((response) => response.json())
       .then((data) => {
