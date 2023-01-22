@@ -4,8 +4,8 @@ import { PokemonData } from "./components/PokemonData";
 import { PokemonForm } from "./components/PokemonForm";
 import { Toggle } from "./components/Toggle";
 import { useState } from "react";
-import logo from "/pokemon_logo.png"
-import {PopUp} from "./components/PopUp";
+import logo from "/pokemon_logo.png";
+import { PopUp } from "./components/PopUp";
 
 export function App() {
   const [theme, setTheme] = useState("light");
@@ -27,7 +27,7 @@ export function App() {
     spe: "0",
     types: [],
     img_principal: logo,
-  }
+  };
   const [pokemon, setPokemon] = useState(initObj);
 
   const fun = (id, name) => {
@@ -52,8 +52,8 @@ export function App() {
       })
       .catch((err) => {
         console.log(err);
-        setPokemon(initObj)
-        setPopUp(true)
+        setPokemon(initObj);
+        setPopUp(true);
       });
   };
 
@@ -67,7 +67,7 @@ export function App() {
         <PokemonForm handleClick={fun} theme={theme} pokemon={pokemon} />
         <Toggle changeTheme={toggleTheme} />
       </div>
-      <PopUp trigger={popUp} setTrigger={setPopUp}/>
+      <PopUp trigger={popUp} setTrigger={setPopUp} />
     </Div100vh>
   );
 }
